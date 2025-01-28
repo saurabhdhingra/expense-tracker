@@ -2,7 +2,7 @@ package models
 
 type Expense struct {
 	ID 			int
-	Date 		Date
+	Date 		string
 	Description string
 	Amount 		float64
 }
