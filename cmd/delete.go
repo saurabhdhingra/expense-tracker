@@ -8,7 +8,11 @@ import (
 func DeleteExpense(id int) {
 	expenses, err := storage.LoadExpenses()
 
-
+	if err != nil {
+		fmt.Println("Error loading expenses:", err)
+		return
+	}
+	
 	found := false
 	for i, expense := range expenses {
 		if expense.ID == id {
