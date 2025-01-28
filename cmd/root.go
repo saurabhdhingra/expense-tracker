@@ -59,3 +59,17 @@ func Execute() {
 		printHelp()
 	}
 }
+
+func printHelp() {
+	fmt.Println("Usage: expense-tracker <command> [options]")
+	fmt.Println("Commands:")
+	fmt.Println("  add       Add a new expense")
+	fmt.Println("            --description <description>  Description of the expense")
+	fmt.Println("            --amount <amount>            Amount of the expense")
+	fmt.Println("  delete    Delete an expense by ID")
+	fmt.Println("            --id <expense_id>            ID of the expense to delete")
+	fmt.Println("  list      List all expenses")
+	fmt.Println("  summary   View a summary of expenses")
+	fmt.Println("            --month <month_number>       (Optional) Month for the summary")
+	fmt.Println("  help      Show this help message")
+}
