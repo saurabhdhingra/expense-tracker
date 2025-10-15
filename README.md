@@ -13,7 +13,7 @@ A simple command-line application to track expenses efficiently. Users can add, 
 
 ## Installation
 ```sh
-git clone https://github.com/yourusername/expense-tracker.git
+git clone https://github.com/saurabhdhingra/expense-tracker.git
 cd expense-tracker
 go build -o expense-tracker
 ```
