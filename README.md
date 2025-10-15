@@ -50,3 +50,5 @@ go build -o expense-tracker
 - Prevents deletion of non-existent expenses.
 - Validates user input for month filtering.
 
+## Inspired by roadmap.sh
+- https://roadmap.sh/projects/expense-tracker

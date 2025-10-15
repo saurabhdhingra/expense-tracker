@@ -20,6 +20,9 @@ func Execute() {
 	summaryCmd := flag.NewFlagSet("summary", flag.ExitOnError)
 	month := summaryCmd.Int("month", 0, "Month number for summary (optional)")
 
+	exportCmd := flag.NewFlagSet("export", flag.ExitOnError)
+	filename := exportCmd.String("filename", "", "Filename to export to")
+
 	if len(os.Args) < 2 {
 		printHelp()
 		return
@@ -54,6 +57,14 @@ func Execute() {
 		}
 	case "help":
 		printHelp()
+	case "export":
+		exportCmd.Parse(os.Args[2:])
+		if *filename == "" {
+			fmt.Println("Error: Filename is required.")
+			fmt.Println("Usage: expense-tracker export --filename <filename>")
+			return
+		}
+		ExportToCSV(*filename)
 	default:
 		fmt.Println("Error: Unknown command.")
 		printHelp()
@@ -71,5 +82,7 @@ func printHelp() {
 	fmt.Println("  list      List all expenses")
 	fmt.Println("  summary   View a summary of expenses")
 	fmt.Println("            --month <month_number>       (Optional) Month for the summary")
+	fmt.Println("  export    Export expenses to a CSV file")
+	fmt.Println("            --filename <filename>        Filename to export to")
 	fmt.Println("  help      Show this help message")
 }
