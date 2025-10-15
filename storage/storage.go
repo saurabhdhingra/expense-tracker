@@ -5,6 +5,7 @@ import (
 	"errors"
 	"expense-tracker/models"
 	"os"
+	"fmt"
 )
 
 var dataFile = "expenses.json"
@@ -13,7 +14,11 @@ func LoadExpenses() ([]models.Expense, error) {
 	var expenses []models.Expense
 	file, err := os.ReadFile(dataFile)
 	if err != nil {
-		return expenses, err
+		if os.IsNotExist(err) {
+			fmt.Printf("Notice: Data file %s not found. Starting with an empty list.\n", dataFile)
+			return expenses, nil
+		}
+		return expenses, fmt.Errorf("error reading data file: %w", err)
 	}
 	json.Unmarshal(file, &expenses)
 	return expenses, nil
